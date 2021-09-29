@@ -1,0 +1,17 @@
+{
+  "name": "tool chat work",
+  "version": "1.0",
+  "description": "tool for chatwork",
+  "browser_action": {
+    "default_icon": "icon/icon16.png",
+    "default_popup": ""
+  },
+  "permissions": [
+    "http://api.giphy.com/"
+  ],
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
