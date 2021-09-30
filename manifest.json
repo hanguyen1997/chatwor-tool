@@ -1,17 +1,14 @@
 {
-  "name": "tool chat work",
-  "version": "1.0",
-  "description": "tool for chatwork",
-  "browser_action": {
-    "default_icon": "icon/icon16.png",
-    "default_popup": ""
-  },
-  "permissions": [
-    "http://api.giphy.com/"
-  ],
-  "manifest_version": 2,
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  }
+   "content_scripts": [ {
+      "css": [ "style.css" ],
+      "js": [ "script.js" ],
+      "matches": [ "https://www.chatwork.com/*"],
+      "run_at": "document_end"
+   } ],
+   "default_locale": "ja",
+   "description": "__MSG_appDesc__",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApNo8+EAAVSeKwVMnCf8P61MdpQpup0MFACIb0PqcKhQM5xZh1RmN8zpGJCqGv3/d6CcbNrYzczql/J+v683sLHSqti2cZYbSXsQi9aq0dX9mLumAbFwOMebYG4OZyPUdNS3o8cChr7nY6z/+aMjpu5PDvCiirapY9YyTJSuNiNp4Rmk4TXhhwSjygozd+1EgvSXEFPj4oq+FRpr3GJRioFxjmfFtgHTpaOnYRXIqaeA7RhWjNKRc0Ku/TzggzYcpxRiBE7NRS8xEU3vH1N6cnTlOCnC1xryD/zGDFT+TWNRkZenjChldscNOV3mTqIIUTi20WlIvPAsVTcCasw36yQIDAQAB",
+   "manifest_version": 2,
+   "name": "Chatwork Tools",
+   "version": "1.5"
 }
