@@ -29,7 +29,7 @@ const addToolbarIcons = () => {
   const createIcon = (name, type, handler, desc) => {
     const html = `
 <li class="_showDescription __chatworkInputTools_toolbarIcon" role="button" aria-label="${desc}" >
-  <span class="__chatworkInputTools_toolbarIcon___chatworkInputTools_toolbarIcon_${type}">${name}</span>
+  <span class="_chatworkInputTools_toolbarIcon_${type}">${name}</span>
 </li>
     `.trim();
     const el = createElement(html);
