@@ -29,7 +29,7 @@ const addToolbarIcons = () => {
   const createIcon = (name, type, handler, desc) => {
     const html = `
 <li class="_showDescription __chatworkInputTools_toolbarIcon" role="button" aria-label="${desc}" >
-  <span class="__chatworkInputTools_toolbarIcon_${type}">${name}</span>
+  <span class="__chatworkInputTools_toolbarIcon___chatworkInputTools_toolbarIcon_${type}">${name}</span>
 </li>
     `.trim();
     const el = createElement(html);
@@ -48,49 +48,13 @@ const addToolbarIcons = () => {
     return el;
   };
 
-  const detectLanguage = () => {
-    if (document.documentElement.lang != null) {
-      switch (document.documentElement.lang) {
-        case 'ja':
-          return 'ja';
-        default:
-          return 'en';
-      }
-    }
-    switch (true) {
-      case document.body.classList.contains('ja'):
-        return 'ja';
-      default:
-        return 'en';
-    }
-  };
-
-  const lang = detectLanguage();
-
-  // やっつけ
 
   let icons;
-  if (lang == 'ja') {
-    icons = createIconWrapper([
-      createIcon('info', 'tag', surround('[info]', '[/info]'), 'info：選択したメッセージをinfoタグで囲みます'),
-      createIcon('title', 'tag', surround('[title]', '[/title]'), 'title：選択したメッセージをtitleタグで囲みます'),
-      createIcon('code', 'tag', surround('[code]', '[/code]'), 'code：選択したメッセージをcodeタグで囲みます'),
-      createIcon('hr', 'tag', insert('[hr]'), 'hr：メッセージにhrタグを挿入します'),
-      createIcon('bow', 'emo', insert('(bow)'), 'bow：メッセージにおじぎエモーティコンを挿入します'),
-      createIcon('roger', 'emo', insert('(roger)'), 'roger：メッセージに了解！エモーティコンを挿入します'),
-      createIcon('cracker', 'emo', insert('(cracker)'), 'cracker：メッセージにクラッカーエモーティコンを挿入します'),
-    ]);
-  } else {
-    icons = createIconWrapper([
-      createIcon('info', 'tag', surround('[info]', '[/info]'), 'info: Surround selection with [info] tag'),
-      createIcon('title', 'tag', surround('[title]', '[/title]'), 'title: Surround selection with [title] tag'),
-      createIcon('code', 'tag', surround('[code]', '[/code]'), 'code: Surround selection with [code] tag'),
-      createIcon('hr', 'tag', insert('[hr]'), 'hr: Insert [hr] tag'),
-      createIcon('bow', 'emo', insert('(bow)'), 'bow: Insert (bow) emo'),
-      createIcon('roger', 'emo', insert('(roger)'), 'roger: Insert (roger) emo'),
-      createIcon('cracker', 'emo', insert('(cracker)'), 'cracker: Insert (cracker) emo'),
-    ]);
-  }
+  icons = createIconWrapper([
+    createIcon('info', 'tag', surround('[info]', '[/info]'), 'info: Surround selection with [info] tag'),
+    createIcon('code', 'tag', surround('[code]', '[/code]'), 'code: Surround selection with [code] tag'),
+  ]);
+
 
   const inject = () => {
     if (document.getElementById('__chatworkInputTools_toolbarIcons') == null) {
@@ -123,16 +87,6 @@ const addToolbarIcons = () => {
   observer.observe(document.getElementById('_chatSendArea'), config);
 };
 
-// Toリストの高さを2倍にする
-const enlargeMentionList = () => {
-  const el = document.querySelector('#_toList ._cwLTList');
-  const height = parseInt(el.style.getPropertyValue('height'));
-  el.style.setProperty('min-height', `${height}px`);
-  el.style.setProperty('max-height', `${height * 2}px`);
-  el.style.setProperty('height', '');
-};
-
-// タイムラインの出現を待つ
 const ready = () => {
   const timeout = 10000;
   const delay = 100;
